@@ -7,15 +7,20 @@
 }
 
 body {
+  font-size: 62.5%;
+
   --color-orange: #f8951b;
-  --color-grey: rgba(0, 0, 0, 0.6);
+  --color-grey: rgba(0, 0, 0, 0.5);
   --color-light-grey: rgba(0, 0, 0, 0.1);
 
-  --slider-progress-color: #49b8ad;
+  --color-green: #49b8ad;
+  --color-light-green: rgba(73, 184, 173, 0.5);
   --title-color: #273469;
 
   font-family: "Raleway", sans-serif;
 }
+
+/* Header */
 
 .header {
   width: 95%;
@@ -30,4 +35,100 @@ body {
   color: var(--color-grey);
   font-weight: bold;
   padding: 1rem 3.5rem;
+}
+
+/* Registration Form */
+
+.registration-form__header {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color-green);
+}
+
+.registration-form__description {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--color-grey);
+}
+
+/* Stepper */
+
+.stepper__progress {
+  height: 0.5rem;
+  background-color: var(--color-light-grey);
+  border-radius: 10px;
+}
+
+.stepper__progress-bar {
+  border-radius: inherit;
+  background-color: var(--color-green);
+  height: 100%;
+}
+
+.stepper__step-badge {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  color: white;
+  background-color: var(--color-green);
+  position: absolute;
+  top: 0;
+  margin-top: calc(-0.65rem + 0.25rem);
+  box-shadow: 0 4px 8px var(--color-light-green);
+  font-size: 14px;
+}
+
+/* Form Step */
+
+.form-step {
+  width: 375px;
+  margin: auto;
+  font-size: 1rem;
+}
+
+.form-step__header h2 {
+  color: var(--title-color);
+  font-weight: bold;
+}
+
+.form-step__header .line {
+  height: 1px;
+  background-color: var(--title-color);
+}
+
+/* Form Validation */
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  background-image: none !important;
+}
+
+/* Controls */
+
+.controls {
+  width: 60%;
+  margin: auto;
+  margin-top: 10rem;
+}
+
+.controls__btn {
+  width: 200px;
+  height: 40px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+}
+
+.controls__btn:focus {
+  outline: none;
+}
+
+.controls__btn--previous {
+  background: white;
+  color: var(--color-orange);
+  border: 1px solid var(--color-orange);
+}
+
+.controls__btn--next {
+  background: var(--color-orange);
+  color: white;
 }
