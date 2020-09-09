@@ -4,6 +4,8 @@ export default () => ({
   number: "",
   age: 18,
   email: "",
+  password: "",
+  name: "",
   stepsValidation: [
     {
       step: "1",

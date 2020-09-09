@@ -15,6 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   setNumber: (number) => dispatch({ type: "setNumber", value: number }),
   setAge: (age) => dispatch({ type: "setAge", value: age }),
   setEmail: (email) => dispatch({ type: "setEmail", value: email }),
+  setPassword: (password) => dispatch({ type: "setPassword", value: password }),
+  setName: (name) => dispatch({ type: "setName", value: name }),
   validateStep: (step, history) =>
     dispatch({ type: "validateStep", step, history }),
 });
@@ -36,6 +38,10 @@ function RegistrationForm({
   setAge,
   email,
   setEmail,
+  password,
+  setPassword,
+  name,
+  setName,
   stepsValidation,
   validateStep,
 }) {
@@ -73,9 +79,10 @@ function RegistrationForm({
               value={number}
               onChange={(e) => setNumber(e.target.value.replace(/\s/g, ""))}
               showAlert={stepsValidation[0].isValid === false}
+              alertMessage="Please enter valid phone number."
             />
           </>
-        ) : (
+        ) : +stepNum === 2 ? (
           <>
             <Select
               id="age"
@@ -92,8 +99,31 @@ function RegistrationForm({
               placeholder="email@gmail.com"
               onChange={(e) => setEmail(e.target.value)}
               showAlert={stepsValidation[1].isValid === false}
+              alertMessage="Please enter valid email address."
             />
           </>
+        ) : +stepNum === 3 ? (
+          <SimpleInput
+            id="password"
+            type="password"
+            label="Password"
+            value={password}
+            placeholder="Your password"
+            onChange={(e) => setPassword(e.target.value)}
+            showAlert={stepsValidation[2].isValid === false}
+            alertMessage="Password cannot be empty and its length should be more than 3 symbols."
+          />
+        ) : (
+          <SimpleInput
+            id="name"
+            type="text"
+            label="Name"
+            value={name}
+            placeholder="John Doe"
+            onChange={(e) => setName(e.target.value)}
+            showAlert={stepsValidation[3].isValid === false}
+            alertMessage="Name cannot be empty"
+          />
         )}
       </FormStep>
       <div

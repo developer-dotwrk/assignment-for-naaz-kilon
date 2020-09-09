@@ -16,5 +16,13 @@ export default (state, { step, history }) => {
     stepsValidation[step - 1].isValid = isValid;
     return { ...state, stepsValidation };
   }
+  if (+step === 3) {
+    const { password } = state;
+    const isValid = password.trim() !== "" && password.length > 0;
+    const stepsValidation = [...state.stepsValidation];
+    isValid && history.push(`/step/${+step + 1}`);
+    stepsValidation[step - 1].isValid = isValid;
+    return { ...state, stepsValidation };
+  }
   return state;
 };
