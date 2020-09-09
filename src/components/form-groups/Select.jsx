@@ -12,7 +12,7 @@ export default function Select(props) {
         onChange={onChange}
       >
         {options.map((option) => (
-          <option>{option}</option>
+          <option key={option}>{option}</option>
         ))}
       </select>
     </div>

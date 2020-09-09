@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Stepper from "./Stepper";
 import FormStep from "./FormStep";
 import { useParams, useHistory } from "react-router-dom";
@@ -6,9 +6,11 @@ import Select from "./form-groups/Select";
 import { connect } from "react-redux";
 import MaskInput from "./form-groups/MaskInput";
 import SimpleInput from "./form-groups/SimpleInput";
+import { lastStep } from "../selectors";
 
 const mapStateToProps = (state) => ({
   ...state,
+  lastStep: lastStep(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   setCountry: (country) => dispatch({ type: "setCountry", value: country }),
@@ -44,9 +46,14 @@ function RegistrationForm({
   setName,
   stepsValidation,
   validateStep,
+  lastStep,
 }) {
   const { stepNum } = useParams();
   const history = useHistory();
+
+  useEffect(() => {
+    if (+stepNum > +lastStep) history.push(`/step/${lastStep}`);
+  }, [stepNum, history, lastStep]);
   return (
     <div className="registration-form">
       <h1 className="registration-form__header text-center mt-5 mb-3">
