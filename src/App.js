@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./components/Header";
 import RegistrationForm from "./components/RegistrationForm";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 function App() {
   return (
@@ -11,6 +11,9 @@ function App() {
         <Switch>
           <Route path="/step/:stepNum">
             <RegistrationForm />
+          </Route>
+          <Route path="">
+            <Redirect to="/step/1" />
           </Route>
         </Switch>
       </div>
